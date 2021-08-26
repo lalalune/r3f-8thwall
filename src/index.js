@@ -1,6 +1,6 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import React, { useState } from 'react';
-import Component from './Experience';
+import Component from './components/Experience';
 
 const onComplete = (action, result) => {
     console.log('onComplete has been triggered');

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 /**
  * Render all children components in another element in the DOM
@@ -30,16 +29,5 @@ class PortalModal extends React.Component {
         );
     }
 }
-
-PortalModal.propTypes = {
-    rootElement: PropTypes.instanceOf(Element),
-    rootElementType: PropTypes.string,
-    children: PropTypes.node.isRequired,
-};
-
-PortalModal.defaultProps = {
-    rootElement: document.querySelector('body'),
-    rootElementType: 'div',
-};
 
 export default PortalModal;
