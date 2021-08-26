@@ -1,13 +1,11 @@
-import * as THREE from 'three';
-import React, { useEffect, useState, useRef } from 'react';
-import { Canvas, useThree } from 'react-three-fiber';
+import React, { useEffect } from 'react';
+import { useThree } from 'react-three-fiber';
 
 const FullWindowCanvas = () => {
 	const {gl} = useThree();
 
 	const {
 	    XR8,
-	    THREE,
 	} = window;
 
 	const vsize_ = {}
@@ -169,10 +167,7 @@ const FullWindowCanvas = () => {
 		updateVideoSize(video)
 	}
 
-	return (
-		<>
-		</>
-	)
-} 
+	return null
+}
 
 export default FullWindowCanvas;

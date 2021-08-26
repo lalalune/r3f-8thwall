@@ -1,6 +1,5 @@
-//import * as THREE from 'three';
-import React, { useEffect, useState, useRef } from 'react';
-import { Canvas, useThree, useFrame  } from 'react-three-fiber';
+import React, { useEffect, useRef, useState } from 'react';
+import { useFrame, useThree } from 'react-three-fiber';
 
 const XR3F = ({name, updateCtx,}) => {
   const { scene, gl, camera } = useThree();
@@ -33,8 +32,6 @@ const XR3F = ({name, updateCtx,}) => {
       onCanvasSizeChange,
       xrScene: xrScene
     });
-
-    //window.addEventListener('touchstart', handleTouchEvent);
   });
 
   const onCanvasSizeChange = ({ canvasWidth, canvasHeight }) => { 
@@ -49,9 +46,6 @@ const XR3F = ({name, updateCtx,}) => {
     gl.setSize(canvasWidth, canvasHeight);
     gl.antialias = true;
 
-    // eslint-disable-next-line no-debugger
-    debugger;
-    // Update React ctx
     updateCtx({
         scene,
         camera,
