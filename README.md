@@ -1,5 +1,5 @@
-# react-three-fiber-8th-wall
+# r3f + 8th wall template
 
-This project aim to integrate [react-three-fiber](https://github.com/pmndrs/react-three-fiber/) with [8th wall](https://8thwall.com) augmented reality library.
+a simple template to get you started with r3f and 8th wall
 
-###  This project is under development and should not be used for production.
+you will need to change the 8th wall dev key, it's locked to your IP address. Make an account, add it to the config.json in /public
