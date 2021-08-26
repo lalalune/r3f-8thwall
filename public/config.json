@@ -1,0 +1,14 @@
+{
+	"baseUrl": "/assets",
+	"appKey": "18vSEPv48YZuIIj3LUcv2qYsAkkMJqrthEFBZWg4rmT6ij3bnhT0HRMXsNcifEtZbWpJXW",
+	"backgroundImage": "/images/AR-BG.jpg",
+	"xr8Config":{
+		"name": "week",
+		"assets":[
+			{
+				"id":"",
+				"url":""
+			}
+		]
+	}
+}
