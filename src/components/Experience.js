@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { Canvas } from 'react-three-fiber';
+import React, { useEffect, useRef, useState } from 'react';
+import { Canvas, useFrame, useThree } from 'react-three-fiber';
+import useContext from '../hooks/useContext';
 import { withLauncher } from './App';
 import { withContext } from './ContextProvider';
 import FullWindowCanvas from './FullWindowCanvas';
-import useContext from '../hooks/useContext';
-
-import React, { useEffect, useRef, useState } from 'react';
-import { useFrame, useThree } from 'react-three-fiber';
 
 const Component = ({ XR8 }) => {
     const {
@@ -34,11 +31,6 @@ const Component = ({ XR8 }) => {
         gl.render(scene, camera);
 
     }, 1)
-
-    const {
-        XR8,
-        THREE,
-    } = window;
 
     useEffect(() => {
         XR8.addCameraPipelineModule({

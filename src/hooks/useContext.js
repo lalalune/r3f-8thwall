@@ -1,5 +1,5 @@
 import { useContext as useReactContext } from 'react';
-import { Context } from '../ContextProvider';
+import { Context } from '../components/ContextProvider';
 
 export default function useContext() {
     const context = useReactContext(Context);
