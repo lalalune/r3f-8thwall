@@ -1,14 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
+import { Object3D } from 'three';
 import useContext from '../hooks/useContext';
 import { withLauncher } from './App';
 import { withContext } from './ContextProvider';
 import FullWindowCanvas from './FullWindowCanvas';
+import Portal from './Portal';
 
-const Component = ({ XR8 }) => {
+const Application = ({ XR8 }) => {
     const {
         updateCtx,
     } = useContext();
+    const { scene, gl, camera } = useThree();
+    useEffect(() => {
+        // XR8.addCameraPipelineModule({
+        //     name: 'xrthree',
+        //     onStart,
+        //     onUpdate,
+        //     //onRender,
+        //     onCanvasSizeChange,
+        //     xrScene: xrScene
+        // });
+    });
+
 
     useEffect(() => {
         if (XR8) {
@@ -16,14 +30,7 @@ const Component = ({ XR8 }) => {
         }
     }, [XR8, updateCtx]);
 
-    const { scene, gl, camera } = useThree();
 
-    const [tapTarget, setTapTarget] = useState(null);
-    const $surface = useRef();
-    const $box = useRef();
-
-    const canvas = gl.domElement
-    canvas.id = "xr-three"
 
     useFrame(({ gl, scene, camera }) => {
 
@@ -32,17 +39,6 @@ const Component = ({ XR8 }) => {
 
     }, 1)
 
-    useEffect(() => {
-        XR8.addCameraPipelineModule({
-            name: 'xrthree',
-            onStart,
-            onUpdate,
-            //onRender,
-            onCanvasSizeChange,
-            xrScene: xrScene
-        });
-    });
-
     const onCanvasSizeChange = ({ canvasWidth, canvasHeight }) => {
         gl.setSize(canvasWidth, canvasHeight);
         camera.aspect = canvasWidth / canvasHeight
@@ -50,7 +46,6 @@ const Component = ({ XR8 }) => {
     }
 
     const onStart = ({ canvasWidth, canvasHeight }) => {
-
         gl.autoClear = false;
         gl.setSize(canvasWidth, canvasHeight);
         gl.antialias = true;
@@ -68,7 +63,6 @@ const Component = ({ XR8 }) => {
     }
 
     const onUpdate = ({ processCpuResult }) => {
-
         camera.updateProjectionMatrix()
 
         let data = processCpuResult.reality
@@ -103,26 +97,11 @@ const Component = ({ XR8 }) => {
                 shadow-mapSize-height={1024}
                 castShadow
             />
-            <group>
-                <mesh onPointerDown={(e) => setTapTarget(e.intersections[0].point)} receiveShadow position={[0, 0, 0]} ref={$surface} rotation-x={-Math.PI / 2}>
-                    <planeGeometry
-                        attach='geometry'
-                        args={[100, 100, 1, 1]}
-                    />
-                    <shadowMaterial
-                        opacity={0.3}
-                    />
-                </mesh>
-                <mesh castShadow position={tapTarget} visible={!!tapTarget} ref={$box} userData={{ hello: 'yop' }} >
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial color="hotpink" />
-                </mesh>
-            </group>
-            )
+            <Portal />
 
             <FullWindowCanvas />
         </Canvas>
     )
 }
 
-export default withContext(withLauncher(Component))
+export default withContext(withLauncher(Application))

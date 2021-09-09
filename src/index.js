@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Component from './components/Experience';
+import Application from './components/Application';
 
 const onComplete = (action, result) => {
     console.log('onComplete has been triggered');
@@ -16,7 +16,7 @@ const ComponentWrapper = (componentProps) => {
     }
 
     return (
-        <Component
+        <Application
             {...componentProps}
         />
     );
